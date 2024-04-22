@@ -1,0 +1,18 @@
+public class MultiplicationTable {
+    public static void main(String[] args) {
+        int n = 20; // Number of tables to print
+        int m = 10; // Maximum value for each table
+        
+        // Loop through each number from 1 to n
+        for (int i = 1; i <= n; i++) {
+            System.out.println("Multiplication table of " + i + ":");
+            
+            // Loop from 1 to m to print the table
+            for (int j = 1; j <= m; j++) {
+                System.out.println(i + " x " + j + " = " + (i * j));
+            }
+            
+            System.out.println(); // Add a blank line after each table
+        }
+    }
+}

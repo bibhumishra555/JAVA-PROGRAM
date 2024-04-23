@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class PalindromeChecker {bibh
+public class PalindromeChecker {
 
     // Function to check if a string is a palindrome
     public static boolean isPalindrome(String str) {

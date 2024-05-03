@@ -1,5 +1,5 @@
 //WRITE THE PROGRAM IN JAVA TO CALCULATE THE FACTORIAL
-//BU: BIBHU MISHRA   DATE : 2/MAY/2024
+//BY: BIBHU MISHRA   DATE : 2/MAY/2024
 import java.util.Scanner;
 
 public class fact {

@@ -1,0 +1,83 @@
+12092025.cpp
+
+MinGW GCC 4.8.1 32-
+
+10
+
+13
+
+14
+
+2 september 2025
+
+//bibhu kumar mishra
+
+#include<iostream>
+
+using namespace std
+
+class complex int a,b;
+
+public:
+
+void get_data()
+
+"Enter the value of real part of complex
+
+cout<<"Enter
+
+cin>>a:
+
+cout<<"Enter the value of imaginary part of complex number: "; cin>>b
+
+cout<<"
+
+15
+
+16
+
+18
+
+19
+
+complex operator + (complex ob)
+
+complex t;
+
+return (t);
+
+23
+
+25
+
+void display()(
+
+26
+
+cout<<a<<" + "<<b<<"i"<<endl;
+
+27
+
+28
+
+30
+
+int main(){
+
+complex obj1, obj2, result:
+
+obj1.get data()
+
+obj2.get_data();
+
+34
+
+35
+
+obj1+obj2
+
+38
+
+result.display():
+
+return 0;

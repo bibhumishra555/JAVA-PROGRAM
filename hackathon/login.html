@@ -1,0 +1,211 @@
+<!--
+  ==============================================================================
+  login.html – Alumni Portal Sign In & Sign Up Page
+  ------------------------------------------------------------------------------
+  This page provides a modern, user-friendly interface for alumni to securely
+  sign in or create a new account on the L.N.D College Alumni Portal. It solves
+  the problem of authenticating users and collecting essential registration info
+  in a clear, accessible way.
+
+  Why this is needed:
+    - Ensures only registered alumni can access protected features.
+    - Makes onboarding easy with a guided, step-by-step signup form.
+    - Improves user experience with visual cues, password toggles, and validation.
+
+  How it works:
+    - Two forms: one for login, one for registration, toggled via links.
+    - Each form collects required info and validates it before submission.
+    - Password fields have show/hide toggles for usability.
+    - Success/error messages are shown in a dedicated message area.
+    - All UI is styled for clarity and mobile responsiveness.
+  ==============================================================================
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#0a0a0a">
+    <title>ACCESS_PORTAL // AUTHENTICATE</title>
+    <!-- Main stylesheet for form layout and design -->
+    <link rel="stylesheet" href="login.css">
+    <!-- Google Fonts - JetBrains Mono for terminal look -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+
+<body>
+    <div class="container">
+        <!-- Decorative background shapes for visual appeal -->
+        <div class="bg-shapes">
+            <div class="shape shape-1"></div>
+            <div class="shape shape-2"></div>
+            <div class="shape shape-3"></div>
+        </div>
+
+        <!-- ===========================
+             LOGIN FORM (default visible)
+             =========================== -->
+        <div class="form-container active" id="loginForm">
+            <div class="form-header">
+                <h2>ACCESS_GRANTED</h2>
+                <p>Authenticate to enter the network</p>
+            </div>
+
+            <form id="loginFormElement" class="form">
+                <!-- Registration Number input -->
+                <div class="input-group">
+                    <div class="input-wrapper">
+                        <i class="fas fa-id-card"></i>
+                        <input type="text" id="loginRegNo" placeholder="Registration Number" required>
+                    </div>
+                </div>
+                <!-- Password input with show/hide toggle -->
+                <div class="input-group">
+                    <div class="input-wrapper">
+                        <i class="fas fa-lock"></i>
+                        <input type="password" id="loginPassword" placeholder="Password" required>
+                        <i class="fas fa-eye toggle-password" onclick="togglePassword('loginPassword')"></i>
+                    </div>
+                </div>
+                <!-- Remember me and forgot password options -->
+                <div class="form-options">
+                    <label class="checkbox-container">
+                        <input type="checkbox" id="rememberMe">
+                        <span class="checkmark"></span>
+                        Remember me
+                    </label>
+                    <a href="#" class="forgot-password">Forgot Password?</a>
+                </div>
+                <!-- Login submit button -->
+                <button type="submit" class="btn btn-primary">
+                    <span>Sign In</span>
+                    <i class="fas fa-arrow-right"></i>
+                </button>
+                <!-- Switch to signup link -->
+                <div class="form-footer">
+                <p>Don't have an account? <a href="#" onclick="switchToSignup()">Sign Up</a></p>
+                </div>
+            </form>
+        </div>
+
+        <!-- ===========================
+             SIGNUP FORM (hidden by default)
+             =========================== -->
+        <div class="form-container" id="signupForm">
+            <div class="form-header">
+                <h2>CREATE_NODE</h2>
+                <p>Initialize your secure identity on the network</p>
+            </div>
+
+            <form id="signupFormElement" class="form">
+                <!-- Row: Full Name and Father's Name -->
+                <div class="input-row">
+                    <div class="input-group">
+                        <div class="input-wrapper">
+                            <i class="fas fa-user"></i>
+                            <input type="text" id="name" placeholder="Full Name" required>
+                        </div>
+                    </div>
+                    <div class="input-group">
+                        <div class="input-wrapper">
+                            <i class="fas fa-user-tie"></i>
+                            <input type="text" id="fatherName" placeholder="Father's Name" required>
+                        </div>
+                    </div>
+                </div>
+                <!-- Row: Course and Department (department enabled after course selection) -->
+                <div class="input-row">
+                    <div class="input-group">
+                        <div class="input-wrapper">
+                            <i class="fas fa-graduation-cap"></i>
+                            <select id="course" required>
+                                <option value="">Select Course</option>
+                                <option value="UG">Under Graduate (UG)</option>
+                                <option value="PG">Post Graduate (PG)</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="input-group">
+                        <div class="input-wrapper">
+                            <i class="fas fa-building"></i>
+                            <select id="department" required disabled>
+                                <option value="">Select Department</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <!-- Row: Registration Number and Passing Year -->
+                <div class="input-row">
+                    <div class="input-group">
+                        <div class="input-wrapper">
+                            <i class="fas fa-id-badge"></i>
+                            <input type="text" id="regNumber" placeholder="Registration Number" required>
+                        </div>
+                    </div>
+                    <div class="input-group">
+                        <div class="input-wrapper">
+                            <i class="fas fa-calendar"></i>
+                            <input type="number" id="signupPassingYear" class="form-input" placeholder="YYYY" min="1970"
+                                max="2025" required>
+                            <span class="input-icon">📅</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- Password and Confirm Password fields with toggles -->
+                <div class="input-group">
+                    <div class="input-wrapper">
+                        <i class="fas fa-lock"></i>
+                        <input type="password" id="signupPassword" placeholder="Create Password" required>
+                        <i class="fas fa-eye toggle-password" onclick="togglePassword('signupPassword')"></i>
+                    </div>
+                </div>
+                <div class="input-group">
+                    <div class="input-wrapper">
+                        <i class="fas fa-lock"></i>
+                        <input type="password" id="confirmPassword" placeholder="Confirm Password" required>
+                        <i class="fas fa-eye toggle-password" onclick="togglePassword('confirmPassword')"></i>
+                    </div>
+                </div>
+                <!-- Terms and conditions agreement -->
+                <div class="form-options">
+                    <label class="checkbox-container">
+                        <input type="checkbox" id="agreeTerms" required>
+                        <span class="checkmark"></span>
+                        I agree to the <a href="#">Terms & Conditions</a>
+                    </label>
+                </div>
+                <!-- Signup submit button -->
+                <button type="submit" class="btn btn-primary">
+                    <span>Create Account</span>
+                    <i class="fas fa-user-plus"></i>
+                </button>
+                <!-- Switch to login link -->
+                <div class="form-footer">
+                    <p>Already have an account? <a href="#" onclick="switchToLogin()">Sign In</a></p>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- ===========================
+         Success/Error Message Area
+         =========================== -->
+    <div class="message-container" id="messageContainer">
+        <div class="message" id="message">
+            <i class="fas fa-check-circle"></i>
+            <span id="messageText"></span>
+        </div>
+    </div>
+
+    <!-- Main JS for form logic, toggling, and validation -->
+    <script src="login.js"></script>
+</body>
+
+</html>
